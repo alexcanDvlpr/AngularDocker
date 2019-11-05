@@ -1,0 +1,21 @@
+<div class="container" style="padding: 35px;">
+    <div class="pokemon-card row" *ngIf="pikachu">
+        <div class="col">
+            <img class="pokemon-img" src="{{ pikachu.sprites.front_default }}" alt="">
+        </div>
+        <div class="col">
+            <h1>{{ pikachu.name | titlecase }} - #{{ pikachu.order }}</h1>
+            <div class="moves-container">
+                <p>Some Moves:</p>
+                <ul>
+                    <li *ngFor="let move of pikachu.moves">{{ move.move.name | titlecase }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="error-card" *ngIf="!pikachu">
+        <div class="alert alert-danger" role="alert">
+            Hubo un error al buscar a Pikachu
+        </div>
+    </div>
+</div>
