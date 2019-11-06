@@ -9,8 +9,11 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class HomeComponent implements OnInit {
 
   pikachu: any;
+  error: boolean;
 
-  constructor(private service: PokemonService) { }
+  constructor(private service: PokemonService) {
+    this.error = false;
+  }
 
   ngOnInit() {
     this.getPikachu();
@@ -18,6 +21,8 @@ export class HomeComponent implements OnInit {
 
   async getPikachu() {
     this.pikachu = await this.service.getPikachu();
+
+    if (!this.pikachu) { this.error = true; }
   }
 
 }
